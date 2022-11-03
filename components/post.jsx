@@ -10,9 +10,9 @@ function Post() {
     <div className="w-full h-[130px] min-h-[130px] flex justify-between px-[20px] gap-[10px] mt-[20px]">
       {/*icons bar*/}
       <div className="w-max h-full flex flex-col justify-between items-center text-second py-[10px]">
-        <HeartIcon className="h-[20px]" />
-        <ChatBubbleBottomCenterTextIcon className="h-[20px]" />
-        <ShareIcon className="h-[20px]" />
+        <HeartIcon className="h-[25px]" />
+        <ChatBubbleBottomCenterTextIcon className="h-[25px]" />
+        <ShareIcon className="h-[25px]" />
       </div>
       {/*gold glowing strip*/}
       <div className="w-[2px] h-full bg-gradient-to-t from-third/0 via-third to-third/0"></div>
