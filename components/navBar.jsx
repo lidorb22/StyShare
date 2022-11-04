@@ -11,8 +11,8 @@ function NavBar() {
   const [menu, setMenu] = useState(false);
   const [serch, setSerch] = useState(false);
   return (
-    <div className="absolute top-0 left-0 w-full h-full text-second pointer-events-none xl:text-first xl:z-10 overflow-hidden bg-red-200/80">
-      <div className="sticky pointer-events-auto overflow-hidden top-0 bg-first pt-[20px] xl:w-[351px] xl:bg-second xl:h-screen">
+    <div className="absolute top-0 left-0 w-full h-full text-second pointer-events-none xl:text-first xl:z-10">
+      <div className="sticky pointer-events-auto bg-scroll top-0 bg-first pt-[20px] xl:w-[351px] xl:bg-second xl:h-screen">
         {menu && (
           <div className="absolute top-0 left-0 w-full h-[100vh] bg-first/90 backdrop-blur-[2px] flex flex-col gap-[60px] items-center justify-center text-[30px]">
             <div className="flex gap-[10px] items-center">
