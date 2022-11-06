@@ -11,7 +11,6 @@ import { useRouter } from "next/router";
 
 function NavBar() {
   const router = useRouter();
-  console.log(router);
   const [menu, setMenu] = useState(false);
   const [container, setContainer] = useState("off");
   return (
@@ -108,7 +107,7 @@ function NavBar() {
           <div className="w-full h-max flex justify-between items-center px-[20px]">
             {menu ? (
               <XMarkIcon
-                className="h-[30px] z-10"
+                className="h-[30px] z-10 xl:text-second"
                 onClick={() => setMenu(false)}
               />
             ) : (
