@@ -117,7 +117,7 @@ function NavBar() {
               סתישר
             </p>
           </div>
-          {router.asPath !== "/profile" && (
+          {router.asPath !== "/profile" && router.asPath !== "/signup" && (
             <div className="w-full h-max flex justify-between items-center bg-gradient-to-r from-third/0 via-third to-third/0 py-[2px] mt-[20px]">
               <div className="w-full h-full flex items-center justify-between bg-first px-[20px] py-[10px] xl:bg-second ">
                 <FunnelIcon className="h-[20px] sm:h-[30px]" />
