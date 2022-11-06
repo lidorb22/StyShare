@@ -9,7 +9,7 @@ function Signup() {
           {isRegister ? "הרשמה" : "כניסה"}
         </div>
         <div className="w-full self-center flex flex-row-reverse justify-center xl:justify-between gap-[20px] px-[20px]">
-          <form className="w-3/4 flex flex-col items-center gap-[35px] xl:w-full">
+          <form className="gap-[35px] w-3/4 flex flex-col items-center xl:w-full">
             <div className="w-full flex flex-col">
               <label className="self-end text-second pr-[5px]">:שם מלא</label>
               <input
@@ -21,14 +21,26 @@ function Signup() {
             <div className="w-full flex flex-col">
               <label className="self-end text-second pr-[5px]">:אימייל</label>
               <input
-                type="text"
+                type="email"
                 className="w-full text-right bg-second text-first rounded-[5px] h-[30px] px-[5px]"
                 placeholder="....האימייל שלך"
               />
             </div>
-            <p className="text-second/50 text-[14px]">
-              שכחתי את הפרטים המזהים שלי
-            </p>
+            {isRegister ? (
+              <div className="w-full flex flex-col">
+                <label className="self-end text-second pr-[5px]">
+                  :תאריך לידה{" "}
+                </label>
+                <input
+                  type="date"
+                  className="w-full text-right bg-second text-first rounded-[5px] h-[30px] px-[5px]"
+                />
+              </div>
+            ) : (
+              <p className="text-second/80 text-[14px]">
+                שכחתי את הפרטים המזהים שלי
+              </p>
+            )}
             <button className="absolute -bottom-[15px] left-[5%] px-[20px] bg-third text-first text-[20px] rounded-[5px]">
               {isRegister ? "הרשמה" : "כניסה"}
             </button>
