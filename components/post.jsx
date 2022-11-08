@@ -5,6 +5,7 @@ import {
   ChatBubbleBottomCenterTextIcon,
 } from "@heroicons/react/20/solid";
 import { motion } from "framer-motion";
+import Comment from "./comment";
 
 function Post() {
   const [focus, setFocus] = useState("off");
@@ -24,14 +25,19 @@ function Post() {
         },
       }}
       transition={
-        focus === "on" && {
-          minHeight: { duration: 1.5 },
-        }
+        focus === "on"
+          ? {
+              minHeight: { duration: 1.5 },
+            }
+          : {
+              position: { delay: 1.5 },
+              minHeight: { duration: 1.2 },
+            }
       }
       onClick={() => (focus === "on" ? setFocus("off") : setFocus("on"))}
-      className="w-full min-h-[30%] h-max"
+      className="w-full min-h-[30%] h-max flex flex-col"
     >
-      <div className="w-full h-full flex justify-between px-[20px] gap-[10px]">
+      <div className="w-full h-max flex justify-between px-[20px] gap-[10px]">
         {/*icons bar*/}
         <motion.div
           animate={focus}
@@ -88,6 +94,38 @@ function Post() {
           </div>
         </div>
       </div>
+      <motion.div
+        animate={focus}
+        variants={{
+          on: {
+            display: "flex",
+            opacity: 1,
+          },
+        }}
+        transition={
+          focus === "on"
+            ? {
+                opacity: { delay: 1 },
+              }
+            : {
+                display: { delay: 0.2 },
+              }
+        }
+        className="w-full h-full pt-[20px] px-[20px] flex flex-col overflow-y-auto overflow-x-hidden hidden opacity-0 gap-[15px] items-end"
+      >
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+        <Comment />
+      </motion.div>
     </motion.div>
   );
 }
