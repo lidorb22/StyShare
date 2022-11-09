@@ -33,11 +33,11 @@ function Signup() {
                 </label>
                 <input
                   type="date"
-                  className="w-full text-right bg-second text-first rounded-[5px] h-[30px] px-[5px]"
+                  className="w-full min-w-full text-right bg-second text-first rounded-[5px] h-[30px] px-[5px]"
                 />
               </div>
             ) : (
-              <p className="text-second/80 text-[14px]">
+              <p className="text-second/80 text-[14px] text-center">
                 שכחתי את הפרטים המזהים שלי
               </p>
             )}

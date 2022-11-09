@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   HeartIcon,
   ShareIcon,
@@ -7,8 +7,17 @@ import {
 import { motion } from "framer-motion";
 import Comment from "./comment";
 
-function Post() {
+function Post({ setIsFocusing }) {
   const [focus, setFocus] = useState("off");
+
+  useEffect(() => {
+    if (focus === "on") {
+      setIsFocusing("on");
+    } else {
+      setIsFocusing("off");
+    }
+  }, [focus]);
+
   return (
     <motion.div
       animate={focus}

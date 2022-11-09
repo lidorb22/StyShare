@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Post from "../components/post";
+import { motion } from "framer-motion";
 
 function Profile() {
+  const [isFocusing, setIsFocusing] = useState("off");
   return (
     <div className="bg-first w-full h-screen flex flex-col pt-[80px] overflow-y-auto pb-[40px] sm:pt-[120px] xl:pl-[360px] gap-[80px]">
       <div className="w-full min-h-[135px] flex gap-[10px] justify-between px-[20px] sm:min-h-[175px] sm:text-[20px]">
@@ -20,13 +22,26 @@ function Profile() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-[30px] xl:px-[60px]">
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-      </div>
+      <motion.div
+        animate={isFocusing}
+        variants={{
+          off: {
+            overflowY: "auto",
+          },
+          on: {
+            overflow: "hidden",
+          },
+        }}
+        className="w-full h-full  max-h-full overflow-y-auto relative flex flex-col gap-[30%] xl:px-[60px]"
+      >
+        <Post setIsFocusing={setIsFocusing} />
+        <Post setIsFocusing={setIsFocusing} />
+        <Post setIsFocusing={setIsFocusing} />
+        <Post setIsFocusing={setIsFocusing} />
+        <Post setIsFocusing={setIsFocusing} />
+        <Post setIsFocusing={setIsFocusing} />
+        <Post setIsFocusing={setIsFocusing} />
+      </motion.div>
     </div>
   );
 }
