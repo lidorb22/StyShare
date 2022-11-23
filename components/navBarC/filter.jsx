@@ -82,7 +82,7 @@ function Filter({ container }) {
             opacity: { delay: 1.2 },
           }
         }
-        className="w-full min-w-full h-[20px] hidden opacity-0 flex gap-[15px] items-center overflow-x-auto overflow-y-hidden"
+        className="w-full min-w-full h-[20px] hidden opacity-0 flex gap-[15px] items-center overflow-x-auto overflow-y-hidden xl:absolute xl:top-[72px] xl:left-0 xl:h-max xl:flex-col xl:gap-[30px]"
       >
         <div className="h-full w-max px-[10px] bg-first rounded-[5px] text-second flex items-center">
           <p>חדש-ישן</p>
@@ -111,7 +111,7 @@ function Filter({ container }) {
             opacity: { delay: 1.2 },
           }
         }
-        className="w-full min-w-full h-[20px] hidden opacity-0 flex items-center justify-between overflow-hidden"
+        className="w-full min-w-full h-[20px] hidden opacity-0 flex items-center justify-between overflow-hidden xl:absolute xl:top-[72px] xl:left-0 xl:h-max xl:flex-col xl:gap-[30px]"
       >
         <p>ללא הגבלה</p>
         <p className="text-first/25">18+</p>
