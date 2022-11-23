@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 
 export default function Home() {
   const router = useRouter();
-  const url = "http://localhost:5000/";
   const [isFocusing, setIsFocusing] = useState("off");
   const [postArray, setPostArray] = useState([]);
   const [newPostInput, setNewPostInput] = useState("");
@@ -16,7 +15,7 @@ export default function Home() {
 
   async function getPosts() {
     try {
-        const response = await axios.get(url + `post/all`);
+        const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + `post/all`);
       setPostArray(response.data);
     } catch (error) {
       console.error(error);
@@ -25,7 +24,7 @@ export default function Home() {
 
   async function postPost() {
     try {
-      const response = await axios.post(url + 'post/new',{
+      const response = await axios.post(process.env.NEXT_PUBLIC_API_URL + 'post/new',{
         creatorID: _id, content: newPostInput
       });
       addPost(response.data._id);
@@ -38,7 +37,7 @@ export default function Home() {
 
   async function deletePost(postID, creatorID, groupId) {
     try {
-      await axios.post(url + "post/remove", {
+      await axios.post(process.env.NEXT_PUBLIC_API_URL + "post/remove", {
           _id: postID,
           creatorID: creatorID,
           groupId: groupId || undefined,

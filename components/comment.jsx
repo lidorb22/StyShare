@@ -10,10 +10,11 @@ function Comment({ info, reply = null, deleteComment }) {
   const { _id } = useProfileStore((state) => state);
   const ownComment = info.creatorID === _id;
 
-  const url = "http://localhost:5000/";
   async function getProfileName() {
     try {
-      const response = await axios.get(url + "user/" + info.creatorID);
+      const response = await axios.get(
+        process.env.NEXT_PUBLIC_API_URL + "user/" + info.creatorID
+      );
       setCreatorName(response.data.fullName);
     } catch (error) {
       console.error(error);

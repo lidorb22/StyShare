@@ -5,7 +5,6 @@ import axios from "axios";
 
 function Signup() {
   const router = useRouter();
-  const url = "http://localhost:5000/";
   const [isRegister, setIsRegister] = useState(false);
   const [fullName, setFullName] = useState("");
   const [age, setAge] = useState("");

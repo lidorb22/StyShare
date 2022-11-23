@@ -67,11 +67,11 @@ function Post({
     }
   };
 
-  const url = "http://localhost:5000/";
-
   async function getProfileName() {
     try {
-      const response = await axios.get(url + "user/" + info.creatorID);
+      const response = await axios.get(
+        process.env.NEXT_PUBLIC_API_URL + "user/" + info.creatorID
+      );
       setCreatorName(response.data.fullName);
     } catch (error) {
       console.error(error);
@@ -80,7 +80,9 @@ function Post({
 
   async function getComments(commentID) {
     try {
-      const response = await axios.get(url + "comment/" + commentID);
+      const response = await axios.get(
+        process.env.NEXT_PUBLIC_API_URL + "comment/" + commentID
+      );
       setCommentsArray((oldComments) => [response.data, ...oldComments]);
     } catch (error) {
       console.error(error);
@@ -92,10 +94,13 @@ function Post({
       return;
     }
     try {
-      const response = await axios.put(url + "post/like", {
-        _id: info._id,
-        userId: _id,
-      });
+      const response = await axios.put(
+        process.env.NEXT_PUBLIC_API_URL + "post/like",
+        {
+          _id: info._id,
+          userId: _id,
+        }
+      );
       if (response.data.success === "liked") {
         addLike(info._id);
       } else if (response.data.success === "like removed") {
@@ -114,12 +119,15 @@ function Post({
       return;
     }
     try {
-      const response = await axios.post(url + "comment/add", {
-        postID: info._id,
-        creatorID: _id,
-        content: replyInput,
-        parentID: null,
-      });
+      const response = await axios.post(
+        process.env.NEXT_PUBLIC_API_URL + "comment/add",
+        {
+          postID: info._id,
+          creatorID: _id,
+          content: replyInput,
+          parentID: null,
+        }
+      );
       setCommentsArray((oldComments) => [response.data, ...oldComments]);
       addComment(response.data._id);
       setReplyState("off");
@@ -131,7 +139,7 @@ function Post({
 
   async function deleteComment(creatorID, commentID, postID) {
     try {
-      await axios.delete(url + "comment/remove", {
+      await axios.delete(process.env.NEXT_PUBLIC_API_URL + "comment/remove", {
         data: {
           postID: postID,
           creatorID: creatorID,
@@ -157,10 +165,13 @@ function Post({
   async function editPost(name) {
     if (name === "trigger") {
       try {
-        const response = await axios.put(url + "post/edit", {
-          postID: info._id,
-          content: replyInput,
-        });
+        const response = await axios.put(
+          process.env.NEXT_PUBLIC_API_URL + "post/edit",
+          {
+            postID: info._id,
+            content: replyInput,
+          }
+        );
         console.log(response.data);
         info.content = replyInput;
         setReplyState("off");

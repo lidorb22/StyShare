@@ -7,7 +7,6 @@ import axios from "axios";
 
 function Profile() {
   const router = useRouter();
-  const url = "http://localhost:5000/";
   const allState = useProfileStore((state) => state);
   const [info, setInfo] = useState(null);
   const [posts, setPosts] = useState([]);
@@ -18,7 +17,9 @@ function Profile() {
 
   async function getProfile() {
     try {
-      const response = await axios.get(url + "user/" + router.query.userID);
+      const response = await axios.get(
+        process.env.NEXT_PUBLIC_API_URL + "user/" + router.query.userID
+      );
       setInfo(response.data);
     } catch (error) {
       console.error(error);
@@ -33,10 +34,13 @@ function Profile() {
       return;
     }
     try {
-      const response = await axios.put(url + "follow/user", {
-        _id: allState._id,
-        followerId: info._id,
-      });
+      const response = await axios.put(
+        process.env.NEXT_PUBLIC_API_URL + "follow/user",
+        {
+          _id: allState._id,
+          followerId: info._id,
+        }
+      );
       if (response.data.success) {
         allState.addFollow(router.query.userID);
       } else {
@@ -49,9 +53,12 @@ function Profile() {
 
   async function getPost() {
     try {
-      const response = await axios.post(url + "post/userAllPosts", {
-        userID: router.query.userID,
-      });
+      const response = await axios.post(
+        process.env.NEXT_PUBLIC_API_URL + "post/userAllPosts",
+        {
+          userID: router.query.userID,
+        }
+      );
       setPosts(response.data.reverse());
     } catch (error) {
       console.error(error);
@@ -60,7 +67,7 @@ function Profile() {
 
   async function deletePost(postID, creatorID, groupId) {
     try {
-      await axios.post(url + "post/remove", {
+      await axios.post(process.env.NEXT_PUBLIC_API_URL + "post/remove", {
         _id: postID,
         creatorID: creatorID,
         groupId: groupId || undefined,

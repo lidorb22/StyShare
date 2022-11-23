@@ -24,15 +24,16 @@ function NavBar() {
   const [users, setUsers] = useState([]);
   const [total, setTotal] = useState(0);
   const { _id, logout } = useProfileStore((state) => state);
-  const url = "http://localhost:5000/";
 
   async function getSerchedItems() {
     try {
       const responsePosts = await axios.get(
-        url + `post/serch?page=${page}&limit=3&name=${serchInput}`
+        process.env.NEXT_PUBLIC_API_URL +
+          `post/serch?page=${page}&limit=3&name=${serchInput}`
       );
       const responseUsers = await axios.get(
-        url + `user/serch?page=${page}&limit=3&name=${serchInput}`
+        process.env.NEXT_PUBLIC_API_URL +
+          `user/serch?page=${page}&limit=3&name=${serchInput}`
       );
       setPosts(responsePosts.data.results);
       setUsers(responseUsers.data.results);
