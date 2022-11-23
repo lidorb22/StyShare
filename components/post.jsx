@@ -370,12 +370,12 @@ function Post({
                 },
               }}
               onClick={() =>
-                replyState === "on" ? editPost("trigger") : postComment()
+                editState === "on" ? editPost("trigger") : postComment()
               }
               className="absolute hidden opacity-0 -bottom-[18px] left-0 bg-third rounded-r-[5px] rounded-bl-[5px] px-[15px] py-[5px] text-[14px] z-10"
             >
               <p className="pointer-events-none">
-                {replyState === "on" ? "אישור" : "הגב/י"}
+                {editState === "on" ? "אישור" : "הגב/י"}
               </p>
             </motion.div>
           </div>
