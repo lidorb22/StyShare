@@ -12,6 +12,8 @@ function Signup() {
   const [email, setEmail] = useState("");
   const { auth, _id } = useProfileStore((state) => state);
 
+  console.log("hi");
+
   const submitForm = async (e) => {
     e.preventDefault();
     const ifstate = isRegister ? "register" : "login";
