@@ -19,7 +19,7 @@ function Signup() {
     const ifstate = isRegister ? "register" : "login";
     try {
       const response = await axios.post(
-        `${process.env.API_URL}auth/${ifstate}`,
+        `${process.env.NEXT_PUBLIC_API_URL}auth/${ifstate}`,
         isRegister ? { fullName, email, age } : { fullName, email }
       );
       auth(response.data);
